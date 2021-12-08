@@ -40,7 +40,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 'eldar1234'
       MYSQL_DATABASE: 'web'
-      MYSQL_USER: 'eldar'
+      MYSQL_USER: 'root'
       MYSQL_PASSWORD: 'eldar1234'
     networks:
       - app-network

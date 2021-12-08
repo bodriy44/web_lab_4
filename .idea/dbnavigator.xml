@@ -24,13 +24,17 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="c53963c9-bebb-48e7-ab63-f390b78d7203">
+        <schema name="web" object-types="table, view, procedure, function, constraint, index, column, dataset trigger" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="d2275265-58d9-40c4-a7c6-f751864c4417">
+    <connection id="c53963c9-bebb-48e7-ab63-f390b78d7203">
       <console name="Connection" type="STANDARD" schema="web" session="Main" />
     </connection>
-    <connection id="738b8857-bcba-4c4d-9de4-fdd7269f8af4">
+    <connection id="210b202d-fe1d-47d1-a0c4-118e7007acee">
       <console name="Connection 1" type="STANDARD" schema="mysql" session="Main" />
     </connection>
   </component>
@@ -38,8 +42,11 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="d2275265-58d9-40c4-a7c6-f751864c4417" />
-    <connection id="738b8857-bcba-4c4d-9de4-fdd7269f8af4" />
+    <connection id="c53963c9-bebb-48e7-ab63-f390b78d7203" />
+    <connection id="210b202d-fe1d-47d1-a0c4-118e7007acee" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="c53963c9-bebb-48e7-ab63-f390b78d7203" dataset="web.products" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -67,7 +74,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="d2275265-58d9-40c4-a7c6-f751864c4417" active="true">
+      <connection id="c53963c9-bebb-48e7-ab63-f390b78d7203" active="true">
         <database>
           <name value="Connection" />
           <description value="" />
@@ -151,7 +158,7 @@
           <object-name-filters />
         </object-filters>
       </connection>
-      <connection id="738b8857-bcba-4c4d-9de4-fdd7269f8af4" active="true">
+      <connection id="210b202d-fe1d-47d1-a0c4-118e7007acee" active="true">
         <database>
           <name value="Connection 1" />
           <description value="" />
