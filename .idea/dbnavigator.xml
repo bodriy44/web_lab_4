@@ -23,7 +23,7 @@
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
-    <show-object-properties value="true" />
+    <show-object-properties value="false" />
     <loaded-nodes>
       <connection connection-id="c53963c9-bebb-48e7-ab63-f390b78d7203">
         <schema name="web" object-types="table, view, procedure, function, constraint, index, column, dataset trigger" />

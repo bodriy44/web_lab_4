@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('title')->comment('Название книги');
             $table->string('author')->comment('Автор');
-            $table->string('description')->comment('Описание');
+            $table->string('description',3000)->comment('Описание');
             $table->decimal('age')->comment('Возраст');
             $table->string('genre')->comment('Жанр');
             $table->decimal('price',12,2)->comment('Цена');
