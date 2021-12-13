@@ -17,14 +17,11 @@ class CreateCartsTable extends Migration
             $table->id();
             $table->decimal('total',12,2)->default(0);
             $table->unsignedBigInteger('count')->default(1);
-            $table->unsignedBigInteger('userId');
-            $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
 
         Schema::create('carts_products', function (Blueprint $table) {
             $table->id();
-            $table->decimal('total',12,2);
             $table->unsignedBigInteger('cartId');
             $table->unsignedBigInteger('productId');
             $table->unsignedBigInteger('count')->default(1);
@@ -44,9 +41,6 @@ class CreateCartsTable extends Migration
     {
         Schema::table('carts_products', function(Blueprint $table){
             $table->dropForeign(['productId', 'cartsId']);
-        });
-        Schema::table('carts', function(Blueprint $table){
-            $table->dropForeign(['userId']);
         });
         Schema::dropIfExists('carts');
         Schema::dropIfExists('carts_products');

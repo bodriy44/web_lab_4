@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use App\Models\Product;
+use App\Domain\Product\Models\Product;
 
 /**
 * Контроллер для управления товарами

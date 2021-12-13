@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
+use App\Domain\Product\Models\Product;
+use App\Domain\Cart\Models\Cart;
+use App\Domain\Cart\Models\CartProduct;
 /**
 * Контроллер для управления корзиной
 */
@@ -23,10 +26,8 @@ class CartController extends Controller
 
         $product = Product::query()->where(['id' => $id])->first();
 
-        if ($product === NULL)
-        {
-            $throw new NotFoundHttpException('Товар не найден');
-        }
+        $cart = Cart::query()
+            ->first();
 
         $cart = $this->getCart();
 
@@ -36,6 +37,7 @@ class CartController extends Controller
             'count' => $count
         ]);
 
+        $this->calculate($cart);
 
         return [
            'inCart' => true
@@ -44,7 +46,22 @@ class CartController extends Controller
 
     protected function calculate($cart)
     {
+        $list = CartProduct::query()->with(['product'])->where([
+        'cartId' => $cart->id
+        ])->get();
 
+        $total = 0;
+        $count = 0;
+
+        foreach ($list as $item)
+        {
+            $total += $item->product->price * $item->count;
+            $count += $item->count;
+        }
+
+        $cart->total = $total;
+        $cart->count = $count;
+        $cart->save();
     }
 
     protected function getCart()
