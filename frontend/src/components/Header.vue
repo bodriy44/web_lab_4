@@ -18,7 +18,7 @@
           <h2 class = "about-header">О нас</h2>
         </router-link>
         <a href="#"><h2 class = "about-header">Личный кабинет</h2></a>
-        <a href="#"><h2 class = "about-header">Корзина</h2></a>
+        <a href="#"><h2 class = "about-header">Корзина<CartInfo></CartInfo></h2></a>
       </nav>
 
     </header>
@@ -27,9 +27,11 @@
 
 <script>
 
+import CartInfo from "./CartInfo";
 export default {
   name: "Header",
-  data() {
+    components: {CartInfo},
+    data() {
       return{
           searchInfo: null
       }
