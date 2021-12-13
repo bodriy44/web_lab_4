@@ -26,7 +26,7 @@
   </section>
 </template>
 
-
+// Вход по токену
 <script>
 export default {
 
@@ -47,7 +47,7 @@ export default {
         authorization(){
             //тут добавление в бд корзины пользователя сделать
             const params = {
-                username: this.username, password: this.password
+                name: this.username, password: this.password
             }
             this.$http.post('/user', params)
             .then(response => this.checkCorrect(response.data.userId))

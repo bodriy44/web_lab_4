@@ -21,10 +21,46 @@ class CartController extends Controller
         $id = $request->get('id');
         $count = $request->get('count', 1);
 
-        // добавили товар в бд
+        $product = Product::query()->where(['id' => $id])->first();
+
+        if ($product === NULL)
+        {
+            $throw new NotFoundHttpException('Товар не найден');
+        }
+
+        $cart = $this->getCart();
+
+        CartProduct::create([
+            'cartId' => $cart->id,
+            'productId' => $product->id,
+            'count' => $count
+        ]);
+
 
         return [
-            'inCart'=> true
+           'inCart' => true
         ];
+    }
+
+    protected function calculate($cart)
+    {
+
+    }
+
+    protected function getCart()
+    {
+        $cart = Cart::query()->first();
+
+        if ($cart === NULL)
+        {
+            Cart::create(
+            [
+            'total' => 0,
+            'count' => 0
+
+            ]);
+        }
+
+        return $cart;
     }
 }

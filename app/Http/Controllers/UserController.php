@@ -4,26 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
-     public $arr = array(
-        [
-        'id' => 1,
-        'username' => 'admin',
-        'password' => 'password'
-         ],
-        [
-        'id' => 2,
-        'username' => 'user',
-        'password' => '1234'
-        ],
-        [
-        'id' => 3,
-        'username' => '1',
-        'password' => '1'
-        ]
-        );
+     public $arr = [];
+
+     public function init()
+     {
+         $this->arr = User::query()->get();
+     }
+
 
      /**
      * Список пользователей.
@@ -31,6 +22,7 @@ class UserController extends Controller
      */
      public function list()
      {
+         $this->init();
          return $this->arr;
      }
 
@@ -41,20 +33,26 @@ class UserController extends Controller
      */
      public function info($id)
      {
+         $this->init();
          return  $this->arr[$id-1];
      }
 
      public function authorization(Request $request)
      {
-        foreach ($this->arr as $value) {
-            if ($value['username'] == $request->get('username') && $value['password']== $request->get('password')){
-                    return [
-                        'userId'=> $value['id']
-                    ];
-            }
-        }
-                return [
+        //$this->init();
+        $arr = [];
+        $arr = User::query()->where(['name' => $request->get('name')])->first();
+        if ($arr == NULL){
+            return [
                     'userId'=> -1
                 ];
+        }
+        else
+        {
+            return [
+                         'userId'=> $arr['id']
+                   ];
+        }
+
      }
 }

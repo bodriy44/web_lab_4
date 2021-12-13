@@ -11,7 +11,7 @@ use App\Models\Product;
 class ProductController extends Controller
 {
 
-    public $arr;
+    public $arr = [];
 
     public function init()
     {
