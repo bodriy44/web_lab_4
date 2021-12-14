@@ -12,10 +12,10 @@ use App\Domain\Cart\Services\CartService;
 class CartController extends Controller
 {
 
-    public function info()
+    public function info($userId)
     {
         $service = new CartService();
-        return $service->getCart();
+        return $service->getCart($userId);
     }
 
     /**
@@ -27,7 +27,7 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
         $service = new CartService();
-        $service->addToCart($request->get('id'), $request->get('count', 1));
+        $service->addToCart($request->get('id'), $request->get('count', 1), $request->get('userId'));
 
         return [
            'inCart' => true

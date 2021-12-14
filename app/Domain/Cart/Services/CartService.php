@@ -7,14 +7,13 @@ use App\Domain\Cart\Models\CartProduct;
 
 class CartService
 {
-    public function addToCart($productId, $count)
+    public function addToCart($productId, $count, $userId)
     {
         $product = Product::query()->where(['id' => $productId])->first();
 
-        $cart = Cart::query()
-            ->first();
+        $cart = Cart::query()->first();
 
-        $cart = $this->getCart();
+        $cart = $this->getCart($userId);
 
         CartProduct::create([
             'cartId' => $cart->id,
@@ -45,9 +44,9 @@ class CartService
         $cart->save();
     }
 
-    public function getCart()
+    public function getCart($userId)
     {
-        $cart = Cart::query()->first();
+        $cart = Cart::query()->where(['id' => $userId])->first();
 
         if ($cart === NULL)
         {

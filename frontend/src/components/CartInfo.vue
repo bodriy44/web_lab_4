@@ -13,7 +13,7 @@ export default {
         }
     },
     created(){
-        this.$http.get('/cart')
+        this.$http.get('/cart/' + localStorage.userId)
         .then(response => this.cart = response.data)
     }
 }

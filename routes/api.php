@@ -24,7 +24,7 @@ Route::prefix('products')->group(function(){
 });
 
 Route::prefix('cart')->group(function(){
-    Route::get('/', [\App\Http\Controllers\CartController::class, 'info']);
+    Route::get('/{userId}', [\App\Http\Controllers\CartController::class, 'info']);
     Route::post('/', [\App\Http\Controllers\CartController::class, 'addToCart']);
 });
 
