@@ -49,9 +49,17 @@ class UserController extends Controller
         }
         else
         {
-            return [
-                         'userId'=> $arr['id']
-                   ];
+            if ($arr['password'] == $request->get('password')){
+                return [
+                             'userId'=> $arr['id']
+                       ];
+            }
+            else
+            {
+             return [
+                                'userId'=> -1
+                            ];
+            }
         }
 
      }
